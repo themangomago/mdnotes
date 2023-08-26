@@ -31,6 +31,25 @@ app.on("ready", () => {
   });
 });
 
+ipcMain.handle("read-config", async () => {
+  try {
+    const configFile = await fsPromises.readFile(
+      join(__dirname, "config.yaml"),
+      "utf-8"
+    );
+    const config = yaml.load(configFile);
+    return config;
+  } catch (error) {
+    console.error("Error reading config file:", error);
+    return null;
+  }
+});
+
+ipcMain.on("login-success", () => {
+  // Handle successful login, e.g., show main app content
+  mainWindow.webContents.send("show-main-content");
+});
+
 ipcMain.handle("read-notes-data", () => {
   return notesData;
 });
@@ -54,5 +73,3 @@ ipcMain.handle("read-file", async (_, filePath) => {
     return null;
   }
 });
-
-// ...

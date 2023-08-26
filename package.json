@@ -6,10 +6,14 @@
   "scripts": {
     "start": "electron src/main.js"
   },
-  "author": "Your Name",
+  "author": "mago",
   "license": "MIT",
   "dependencies": {
+    "ejs": "^3.1.9",
     "electron": "^13.6.9",
     "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "bootstrap": "^5.3.1"
   }
 }

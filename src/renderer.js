@@ -1,6 +1,9 @@
-const { readDirectory, readFile, readNotesData, yaml } = window.electron;
+const { readDirectory, readFile, readNotesData, yaml, ipcRenderer } =
+  window.electron;
 const noteList = document.getElementById("note-list");
 const metadataList = document.getElementById("metadata-list");
+
+import { render } from "./components/hello/hello.js";
 
 var notesData = [];
 
@@ -45,7 +48,50 @@ async function loadMetadata() {
   });
 }
 
+// Load and render components
+const renderComponent = async (componentName) => {
+  // const template = await fetch(
+  //   `components/${componentName}/${componentName}.hbs`
+  // ).then((response) => response.text());
+  // const compiledTemplate = Handlebars.compile(template);
+  // const renderedHtml = compiledTemplate();
+
+  // document.getElementById(`component-${componentName}`).innerHTML =
+  //   renderedHtml;
+  render();
+};
+
+const loadComponent = async (componentName, element, payload) => {
+  try {
+    // Load the module dynamically
+    const { render } = await import(
+      `./components/${componentName}/${componentName}.js`
+    );
+
+    // Call the render function from the loaded module
+    render(element, payload);
+  } catch (error) {
+    console.error(`Error loading component: ${componentName}`);
+    console.error(error);
+  }
+};
+
+// Find all <component> elements and load their specified components
+document.addEventListener("DOMContentLoaded", () => {
+  const componentElements = document.querySelectorAll("component");
+
+  componentElements.forEach((element) => {
+    const moduleName = element.getAttribute("module");
+    const payload = element.getAttribute("payload");
+
+    if (moduleName) {
+      loadComponent(moduleName, element, payload);
+    }
+  });
+});
+
 window.onload = () => {
   loadNotes();
   loadMetadata();
+  //renderComponent("hello");
 };

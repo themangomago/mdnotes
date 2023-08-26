@@ -61,6 +61,53 @@ const renderComponent = async (componentName) => {
   render();
 };
 
+// const loadComponent = async (componentName, element, payload) => {
+//   try {
+//     // Load the module dynamically
+//     const { render } = await import(
+//       `./components/${componentName}/${componentName}.js`
+//     );
+
+//     // Call the render function from the loaded module
+//     render(element, payload);
+//   } catch (error) {
+//     console.error(`Error loading component: ${componentName}`);
+//     console.error(error);
+//   }
+// // };
+// const loadComponent = async (componentName, element, payload) => {
+//   try {
+//     // Load the module dynamically
+//     const { render } = await import(
+//       `./components/${componentName}/${componentName}.js`
+//     );
+
+//     console.log("loadComponent:" + componentName);
+
+//     // Call the render function from the loaded module
+//     render(element, payload);
+
+//     console.log(element);
+
+//     // Recursively process nested components
+//     const nestedComponentElements = element.querySelectorAll("component");
+//     console.log("nestedComponentElements:" + nestedComponentElements);
+//     console.log("size:" + nestedComponentElements.length);
+
+//     nestedComponentElements.forEach((nestedElement) => {
+//       console.log("nestedElement:" + nestedElement);
+//       const nestedModuleName = nestedElement.getAttribute("module");
+//       const nestedPayload = nestedElement.getAttribute("payload");
+//       if (nestedModuleName) {
+//         loadComponent(nestedModuleName, nestedElement, nestedPayload);
+//       }
+//     });
+//   } catch (error) {
+//     console.error(`Error loading component: ${componentName}`);
+//     console.error(error);
+//   }
+// };
+
 const loadComponent = async (componentName, element, payload) => {
   try {
     // Load the module dynamically
@@ -70,6 +117,27 @@ const loadComponent = async (componentName, element, payload) => {
 
     // Call the render function from the loaded module
     render(element, payload);
+
+    // Set up a MutationObserver to wait for nested components to be added
+    const observer = new MutationObserver((mutationsList) => {
+      for (const mutation of mutationsList) {
+        if (mutation.type === "childList" && mutation.addedNodes.length) {
+          const nestedComponentElements = element.querySelectorAll("component");
+          nestedComponentElements.forEach((nestedElement) => {
+            const nestedModuleName = nestedElement.getAttribute("module");
+            const nestedPayload = nestedElement.getAttribute("payload");
+            if (nestedModuleName) {
+              loadComponent(nestedModuleName, nestedElement, nestedPayload);
+            }
+          });
+          // Disconnect the observer once components have been processed
+          observer.disconnect();
+        }
+      }
+    });
+
+    // Start observing the target element
+    observer.observe(element, { childList: true, subtree: true });
   } catch (error) {
     console.error(`Error loading component: ${componentName}`);
     console.error(error);

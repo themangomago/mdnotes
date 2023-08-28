@@ -9,7 +9,7 @@ const render = async (target, payload) => {
   const compiledTemplate = ejs.compile(template);
   const renderedHtml = compiledTemplate({ text: payload });
 
-  target.innerHTML = renderedHtml;
+  target.outerHTML = renderedHtml;
 
   const button = target.querySelector("button");
   button.addEventListener("click", () => {

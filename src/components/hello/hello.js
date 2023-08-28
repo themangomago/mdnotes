@@ -13,7 +13,7 @@ const render = async (target, payload) => {
   // Assume you have a "ejs" function that compiles and renders the template
   const renderedHtml = ejs.render(template, { text: payload });
 
-  target.innerHTML = renderedHtml;
+  target.outerHTML = renderedHtml;
 };
 
 // Export the render function

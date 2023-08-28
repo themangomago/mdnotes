@@ -1,0 +1,187 @@
+<nav
+  id="sidebar"
+  class="d-flex flex-column align-items-stretch flex-shrink-0 sidebar-expanded bg-body-tertiary"
+>
+  <!-- Sidebar buttons -->
+  <div class="p-2 d-flex flex-row justify-content-center gap-1">
+    <button
+      type="button"
+      class="btn btn-outline-primary sidebar-toggle visible d-flex px-2 gap-2 flex-grow-1 overflow-hidden"
+    >
+      <span class="truncate">+ New Note</span>
+    </button>
+    <button
+      type="button"
+      id="toggle-sidebar"
+      class="btn btn-outline-primary visible d-flex px-2 gap-2 flex-shrink-0 overflow-hidden"
+    >
+      <span class="truncate">+</span>
+    </button>
+  </div>
+
+  <ul id="note-list"></ul>
+
+  <!-- List start -->
+  <div class="p-2 sidebar-toggle visible">
+    <h6>Notes</h6>
+  </div>
+  <div class="list-group list-group-flush scrollarea sidebar-toggle visible">
+    <a
+      href="https://getbootstrap.com/docs/5.3/examples/sidebars/#"
+      class="list-group-item list-group-item-action active py-1 lh-sm"
+      aria-current="true"
+    >
+      <div class="d-flex w-100 align-items-center justify-content-between">
+        <p class="mb-1">List group item heading</p>
+      </div>
+    </a>
+    <a
+      href="https://getbootstrap.com/docs/5.3/examples/sidebars/#"
+      class="list-group-item list-group-item-action py-3 lh-sm"
+    >
+      <div class="d-flex w-100 align-items-center justify-content-between">
+        <strong class="mb-1">List group item heading</strong>
+        <small class="text-body-secondary">Tues</small>
+      </div>
+      <div class="col-10 mb-1 small">
+        Some placeholder content in a paragraph below the heading and date.
+      </div>
+    </a>
+    <a
+      href="https://getbootstrap.com/docs/5.3/examples/sidebars/#"
+      class="list-group-item list-group-item-action py-3 lh-sm"
+    >
+      <div class="d-flex w-100 align-items-center justify-content-between">
+        <strong class="mb-1">List group item heading</strong>
+        <small class="text-body-secondary">Mon</small>
+      </div>
+      <div class="col-10 mb-1 small">
+        Some placeholder content in a paragraph below the heading and date.
+      </div>
+    </a>
+    <a
+      href="https://getbootstrap.com/docs/5.3/examples/sidebars/#"
+      class="list-group-item list-group-item-action py-3 lh-sm"
+      aria-current="true"
+    >
+      <div class="d-flex w-100 align-items-center justify-content-between">
+        <strong class="mb-1">List group item heading</strong>
+        <small class="text-body-secondary">Wed</small>
+      </div>
+      <div class="col-10 mb-1 small">
+        Some placeholder content in a paragraph below the heading and date.
+      </div>
+    </a>
+    <a
+      href="https://getbootstrap.com/docs/5.3/examples/sidebars/#"
+      class="list-group-item list-group-item-action py-3 lh-sm"
+    >
+      <div class="d-flex w-100 align-items-center justify-content-between">
+        <strong class="mb-1">List group item heading</strong>
+        <small class="text-body-secondary">Tues</small>
+      </div>
+      <div class="col-10 mb-1 small">
+        Some placeholder content in a paragraph below the heading and date.
+      </div>
+    </a>
+    <a
+      href="https://getbootstrap.com/docs/5.3/examples/sidebars/#"
+      class="list-group-item list-group-item-action py-3 lh-sm"
+    >
+      <div class="d-flex w-100 align-items-center justify-content-between">
+        <strong class="mb-1">List group item heading</strong>
+        <small class="text-body-secondary">Mon</small>
+      </div>
+      <div class="col-10 mb-1 small">
+        Some placeholder content in a paragraph below the heading and date.
+      </div>
+    </a>
+    <a
+      href="https://getbootstrap.com/docs/5.3/examples/sidebars/#"
+      class="list-group-item list-group-item-action py-3 lh-sm"
+      aria-current="true"
+    >
+      <div class="d-flex w-100 align-items-center justify-content-between">
+        <strong class="mb-1">List group item heading</strong>
+        <small class="text-body-secondary">Wed</small>
+      </div>
+      <div class="col-10 mb-1 small">
+        Some placeholder content in a paragraph below the heading and date.
+      </div>
+    </a>
+    <a
+      href="https://getbootstrap.com/docs/5.3/examples/sidebars/#"
+      class="list-group-item list-group-item-action py-3 lh-sm"
+    >
+      <div class="d-flex w-100 align-items-center justify-content-between">
+        <strong class="mb-1">List group item heading</strong>
+        <small class="text-body-secondary">Tues</small>
+      </div>
+      <div class="col-10 mb-1 small">
+        Some placeholder content in a paragraph below the heading and date.
+      </div>
+    </a>
+    <a
+      href="https://getbootstrap.com/docs/5.3/examples/sidebars/#"
+      class="list-group-item list-group-item-action py-3 lh-sm"
+    >
+      <div class="d-flex w-100 align-items-center justify-content-between">
+        <strong class="mb-1">List group item heading</strong>
+        <small class="text-body-secondary">Mon</small>
+      </div>
+      <div class="col-10 mb-1 small">
+        Some placeholder content in a paragraph below the heading and date.
+      </div>
+    </a>
+  </div>
+  <!-- List end -->
+  <!-- filter tags -->
+  <div class="p-2 sidebar-toggle visible">
+    <h6>Filter Tags</h6>
+    <div class="d-flex gap-2 py-1">
+      <span class="badge text-bg-primary rounded-pill">Tag1</span>
+      <span
+        class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis rounded-pill"
+        >Tag2</span
+      >
+    </div>
+  </div>
+  <!-- filter tags end -->
+  <hr class="sidebar-toggle visible" />
+  <!-- user start -->
+
+  <div class="dropdown d-flex p-2 justify-content-between">
+    <div class="d-flex align-items-center sidebar-toggle visible">
+      <small class="text-muted"
+        >mdNotes <br />
+        1.1.10
+      </small>
+    </div>
+
+    <div class="d-flex align-items-center">
+      <a
+        href="#"
+        class="d-flex align-items-center p-3 link-body-emphasis text-decoration-none dropdown-toggle sidebar-toggle visible"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <img
+          src="https://github.com/mdo.png"
+          alt="mdo"
+          width="24"
+          height="24"
+          class="rounded-circle"
+        />
+      </a>
+      <ul class="dropdown-menu text-small shadow" style="">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider" /></li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- user end -->
+</nav>

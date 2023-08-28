@@ -1,7 +1,5 @@
 const { readDirectory, readFile, readNotesData, yaml, ipcRenderer } =
   window.electron;
-const noteList = document.getElementById("note-list");
-const metadataList = document.getElementById("metadata-list");
 
 import { render } from "./components/hello/hello.js";
 
@@ -9,6 +7,9 @@ var notesData = [];
 
 async function loadNotes() {
   const notesDirectory = "./notes"; // Replace with the actual path
+
+  const noteList = document.getElementById("note-list");
+  console.log(noteList);
 
   try {
     const files = await readDirectory(notesDirectory);
@@ -38,6 +39,7 @@ async function loadNotes() {
 }
 
 async function loadMetadata() {
+  const metadataList = document.getElementById("metadata-list");
   notesData = await readNotesData();
   notesData.forEach(({ filePath, metadata }) => {
     const metadataItem = document.createElement("li");
@@ -144,8 +146,21 @@ const loadComponent = async (componentName, element, payload) => {
   }
 };
 
-// Find all <component> elements and load their specified components
-document.addEventListener("DOMContentLoaded", () => {
+// // Find all <component> elements and load their specified components
+// document.addEventListener("DOMContentLoaded", () => {
+//   const componentElements = document.querySelectorAll("component");
+
+//   componentElements.forEach((element) => {
+//     const moduleName = element.getAttribute("module");
+//     const payload = element.getAttribute("payload");
+
+//     if (moduleName) {
+//       loadComponent(moduleName, element, payload);
+//     }
+//   });
+// });
+
+function loadComponents() {
   const componentElements = document.querySelectorAll("component");
 
   componentElements.forEach((element) => {
@@ -156,9 +171,11 @@ document.addEventListener("DOMContentLoaded", () => {
       loadComponent(moduleName, element, payload);
     }
   });
-});
+}
 
 window.onload = () => {
+  loadComponents();
+
   loadNotes();
   loadMetadata();
   //renderComponent("hello");

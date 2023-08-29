@@ -6,6 +6,12 @@ const bridge = async (channel, payload) => {
   return response;
 };
 
+window.showNoteContent = async function (id) {
+  const noteContentElement = document.getElementById("content-display");
+  const note = await ipcRenderer.invoke("get-note", id);
+  noteContentElement.innerHTML = note.content;
+};
+
 const loadComponent = async (componentName, element, payload) => {
   try {
     // Load the module dynamically

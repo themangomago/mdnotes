@@ -28,21 +28,12 @@
   <div
     class="list-group list-group-flush flex-grow-1 scrollarea sidebar-toggle visible"
   >
-    <a
-      class="list-group-item list-group-item-action py-1 lh-sm"
-      onclick="testme()"
-    >
-      <div>
-        <p class="mb-1">Test</p>
-        <small class="text-body-secondary">Test</small>
-      </div>
-    </a>
-
     <% if (notes.length === 0) { %>
     <small class="text-muted p-2">No notes yet</small>
     <% } else { %> <% for(var i = 0; i < notes.length; i++) { %>
 
     <a
+      onclick="window.electron.bridge('show-note', <%= i %>)"
       class="list-group-item list-group-item-action <% if (i == activeId) { %>active<% } %> py-1 lh-sm"
     >
       <div>

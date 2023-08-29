@@ -35,12 +35,23 @@ app.on("ready", async () => {
   });
 });
 
-ipcMain.handdle("test", () => {
+ipcMain.handle("test", () => {
   console.log("test");
 });
 
-ipcMain.handle("get-notes", () => {
+ipcMain.handle("get-notes", async () => {
   return notesData;
+});
+
+ipcMain.handle("get-note", async (_, noteId) => {
+  return notesData[noteId];
+});
+
+ipcMain.handle("show-note", async (_, noteId) => {
+  //mainWindow.webContents.send("display-note-content", notesData[noteId]);
+  mainWindow.webContents.executeJavaScript(
+    "window.showNoteContent(" + noteId + ");"
+  );
 });
 
 ipcMain.handle("read-config", async () => {

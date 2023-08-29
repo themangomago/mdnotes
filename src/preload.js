@@ -23,3 +23,10 @@ contextBridge.exposeInMainWorld("electron", {
     return await ipcRenderer.invoke(channel, data);
   },
 });
+
+ipcRenderer.on("display-note-content", (content) => {
+  console.log("display-note-content called");
+  console.log(window.showNoteContent);
+
+  window.showNoteContent(content);
+});

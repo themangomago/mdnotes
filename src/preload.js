@@ -19,4 +19,7 @@ contextBridge.exposeInMainWorld("electron", {
   readNotesData: async () => {
     return await ipcRenderer.invoke("read-notes-data");
   },
+  bridge: async (channel, data) => {
+    return await ipcRenderer.invoke(channel, data);
+  },
 });

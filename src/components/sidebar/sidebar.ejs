@@ -25,114 +25,32 @@
   <div class="p-2 sidebar-toggle visible">
     <h6>Notes</h6>
   </div>
-  <div class="list-group list-group-flush scrollarea sidebar-toggle visible">
+  <div
+    class="list-group list-group-flush flex-grow-1 scrollarea sidebar-toggle visible"
+  >
     <a
-      href="https://getbootstrap.com/docs/5.3/examples/sidebars/#"
-      class="list-group-item list-group-item-action active py-1 lh-sm"
-      aria-current="true"
+      class="list-group-item list-group-item-action py-1 lh-sm"
+      onclick="testme()"
     >
-      <div class="d-flex w-100 align-items-center justify-content-between">
-        <p class="mb-1">List group item heading</p>
+      <div>
+        <p class="mb-1">Test</p>
+        <small class="text-body-secondary">Test</small>
       </div>
     </a>
+
+    <% if (notes.length === 0) { %>
+    <small class="text-muted p-2">No notes yet</small>
+    <% } else { %> <% for(var i = 0; i < notes.length; i++) { %>
+
     <a
-      href="https://getbootstrap.com/docs/5.3/examples/sidebars/#"
-      class="list-group-item list-group-item-action py-3 lh-sm"
+      class="list-group-item list-group-item-action <% if (i == activeId) { %>active<% } %> py-1 lh-sm"
     >
-      <div class="d-flex w-100 align-items-center justify-content-between">
-        <strong class="mb-1">List group item heading</strong>
-        <small class="text-body-secondary">Tues</small>
-      </div>
-      <div class="col-10 mb-1 small">
-        Some placeholder content in a paragraph below the heading and date.
+      <div>
+        <p class="mb-1"><%= notes[i].title %></p>
+        <small class="text-body-secondary"><%= notes[i].vpath %></small>
       </div>
     </a>
-    <a
-      href="https://getbootstrap.com/docs/5.3/examples/sidebars/#"
-      class="list-group-item list-group-item-action py-3 lh-sm"
-    >
-      <div class="d-flex w-100 align-items-center justify-content-between">
-        <strong class="mb-1">List group item heading</strong>
-        <small class="text-body-secondary">Mon</small>
-      </div>
-      <div class="col-10 mb-1 small">
-        Some placeholder content in a paragraph below the heading and date.
-      </div>
-    </a>
-    <a
-      href="https://getbootstrap.com/docs/5.3/examples/sidebars/#"
-      class="list-group-item list-group-item-action py-3 lh-sm"
-      aria-current="true"
-    >
-      <div class="d-flex w-100 align-items-center justify-content-between">
-        <strong class="mb-1">List group item heading</strong>
-        <small class="text-body-secondary">Wed</small>
-      </div>
-      <div class="col-10 mb-1 small">
-        Some placeholder content in a paragraph below the heading and date.
-      </div>
-    </a>
-    <a
-      href="https://getbootstrap.com/docs/5.3/examples/sidebars/#"
-      class="list-group-item list-group-item-action py-3 lh-sm"
-    >
-      <div class="d-flex w-100 align-items-center justify-content-between">
-        <strong class="mb-1">List group item heading</strong>
-        <small class="text-body-secondary">Tues</small>
-      </div>
-      <div class="col-10 mb-1 small">
-        Some placeholder content in a paragraph below the heading and date.
-      </div>
-    </a>
-    <a
-      href="https://getbootstrap.com/docs/5.3/examples/sidebars/#"
-      class="list-group-item list-group-item-action py-3 lh-sm"
-    >
-      <div class="d-flex w-100 align-items-center justify-content-between">
-        <strong class="mb-1">List group item heading</strong>
-        <small class="text-body-secondary">Mon</small>
-      </div>
-      <div class="col-10 mb-1 small">
-        Some placeholder content in a paragraph below the heading and date.
-      </div>
-    </a>
-    <a
-      href="https://getbootstrap.com/docs/5.3/examples/sidebars/#"
-      class="list-group-item list-group-item-action py-3 lh-sm"
-      aria-current="true"
-    >
-      <div class="d-flex w-100 align-items-center justify-content-between">
-        <strong class="mb-1">List group item heading</strong>
-        <small class="text-body-secondary">Wed</small>
-      </div>
-      <div class="col-10 mb-1 small">
-        Some placeholder content in a paragraph below the heading and date.
-      </div>
-    </a>
-    <a
-      href="https://getbootstrap.com/docs/5.3/examples/sidebars/#"
-      class="list-group-item list-group-item-action py-3 lh-sm"
-    >
-      <div class="d-flex w-100 align-items-center justify-content-between">
-        <strong class="mb-1">List group item heading</strong>
-        <small class="text-body-secondary">Tues</small>
-      </div>
-      <div class="col-10 mb-1 small">
-        Some placeholder content in a paragraph below the heading and date.
-      </div>
-    </a>
-    <a
-      href="https://getbootstrap.com/docs/5.3/examples/sidebars/#"
-      class="list-group-item list-group-item-action py-3 lh-sm"
-    >
-      <div class="d-flex w-100 align-items-center justify-content-between">
-        <strong class="mb-1">List group item heading</strong>
-        <small class="text-body-secondary">Mon</small>
-      </div>
-      <div class="col-10 mb-1 small">
-        Some placeholder content in a paragraph below the heading and date.
-      </div>
-    </a>
+    <% } %> <% } %>
   </div>
   <!-- List end -->
   <!-- filter tags -->

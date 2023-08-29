@@ -1,15 +1,18 @@
-const { ejs } = window.electron;
+const { ejs, bridge } = window.electron;
+
+var activeId = 0;
 
 // Function to render the hello component
 const render = async (target, payload) => {
+  const notesData = await bridge("get-notes", null);
   const template = await fetch(`components/sidebar/sidebar.ejs`).then(
     (response) => response.text()
   );
 
-  // const compiledTemplate = ejs.compile(template);
-  // const renderedHtml = compiledTemplate({ text: customText });
-  // Assume you have a "ejs" function that compiles and renders the template
-  const renderedHtml = ejs.render(template, { text: payload });
+  const renderedHtml = ejs.render(template, {
+    notes: notesData,
+    activeId: activeId,
+  });
 
   target.outerHTML = renderedHtml;
 

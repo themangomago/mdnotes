@@ -3,13 +3,17 @@ const { join } = require("path");
 const fs = require("fs/promises");
 const { format } = require("url");
 const yaml = require("js-yaml");
+const { scanNotes } = require("./notes.js");
 
 let mainWindow;
 
 // An array to store parsed metadata and file paths
-const notesData = [];
+let notesData;
 
-app.on("ready", () => {
+app.on("ready", async () => {
+  notesData = await scanNotes();
+  console.log(notesData);
+
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -29,6 +33,14 @@ app.on("ready", () => {
   mainWindow.on("closed", () => {
     mainWindow = null;
   });
+});
+
+ipcMain.handdle("test", () => {
+  console.log("test");
+});
+
+ipcMain.handle("get-notes", () => {
+  return notesData;
 });
 
 ipcMain.handle("read-config", async () => {
